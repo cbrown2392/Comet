@@ -1,0 +1,21 @@
+- Implemented organization to website.
+- Gotta relink the assets   
+- Find a starting place with the quiz + JS
+- linked css in settings.html
+- version control?
+- created quiz.html
+--forget that about version control
+- created home.html
+- created login.html
+- created review.html
+- created stats.html
+- home page main nav
+- linked to the proper pages
+- home.html menu options + links
+- playing around with how to display the quiz
+- using shitty looking frontend to test js shit
+- looking at the backend gonna fuck around with js and html... wish me luck. doing it otf
+expect a lot of little tweaks from here
+
+
+
