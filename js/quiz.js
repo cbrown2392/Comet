@@ -1,3 +1,4 @@
+// JavaScript Document
 Script:
 var numQues = 5;
 var numChoi = 3;
