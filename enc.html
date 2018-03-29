@@ -17,7 +17,7 @@ function goBack() {
 }
 </script>
 <div id="search" class="icon"></div>
-<a id="burger" class="icon" onclick="openNav()"></a>
+<a id="burger" class="icon" onclick="openNav()"></a> 
 <script>
 function openNav() {
     document.getElementById("mySidenav").style.height = "100%";
@@ -26,15 +26,55 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.height = "0";
 }
-</script>
+</script> 
 
 <!--/*CONTENT*/-->
 
-<div id="p1">
-	<h1>Encyclopedia</h1>
-	</div>
-	
-	
+<div id="p1"> 
+  <script>
+
+    var xhr = new XMLHttpRequest();
+    // Create XMLHttpRequest object
+
+    xhr.overrideMimeType("application/json");
+
+    xhr.open('GET', 'http://parsec.evl.uic.edu:8080/api/bytes/id/23', true);
+    // Prepare the request
+
+    xhr.onload = function() {                       // When readystate changes
+      // The following conditional check will not work locally - only on a server
+      if(xhr.status === 200) {                      // If server status was ok
+        var responseObject = JSON.parse(xhr.responseText);
+
+        //log the json output
+        console.log('response', responseObject)
+
+        // BUILD UP STRING WITH NEW CONTENT (could also use DOM manipulation)
+        var newContent = '';
+        for (var i = 0; i < responseObject.length; i++) { // Loop through object
+        newContent += '<div class="event">';
+        /*newContent += responseObject[i].title;*/
+        /*newContent += '<br /><br />'+responseObject[i].caption;*/
+		newContent += '<br /><br />'+responseObject[i].epidemiology;
+		newContent += '<br /><br />'+responseObject[i].presentation_on_exam;
+		newContent += '<br /><br />'+responseObject[i].diagnostics;
+		newContent += '<br /><br />'+responseObject[i].clinical_presentation;
+			
+          newContent += '</div>';
+        }
+        // Update the page with the new content
+        document.getElementById('content').innerHTML = newContent;
+            }
+    };
+    xhr.send(null);                                 // Send the request
+
+    </script>
+  <header>
+    <h1>Head Trauma: Cerebral Contusion and Epidural Hematomas</h1>
+  </header>
+  <section id="content"></section>
+</div>
+
 <!--/*CONTENT*/-->
 
 <div id="mySidenav" class="sidenav"> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" id="close-button">&times;</a>
@@ -48,7 +88,6 @@ function closeNav() {
       <input type="checkbox" >
       <span class="slider round"></span> </label>
   </div>
- 
   </a>
   <div id="line2" class="line"></div>
   <a href="#" id="note-settings" class="category">Notifications</a>
@@ -64,7 +103,5 @@ function closeNav() {
   <div id="quiz" class=".icon2" href="quiz.html"><a id="quiz-button" href="quiz.html">Quiz</a></div>
   <div id="review" class="icon2"href="enc.html"><a id="quiz-button" href="enc.html">Encyclopedia</a></div>
 </div>
-
-
 </body>
 </html>
